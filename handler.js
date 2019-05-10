@@ -18,6 +18,10 @@ module.exports.get_countdown = async (event, context) => {
   const result = await db.getQueryResult();
 
   return {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true
+    },
     body: JSON.stringify({
       target: result[0].target,
       created_at: result[0].created_at,
